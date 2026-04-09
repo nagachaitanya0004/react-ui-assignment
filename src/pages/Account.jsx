@@ -1,49 +1,61 @@
-import React from 'react';
-import './Account.css';
+import { useMemo } from "react";
+import "./Account.css";
 
-export default function Account() {
-  
-  // Clean mock object matching visual design requirements
-  const user = {
-    name: "Marry Doe",
-    email: "Marry@Gmail.com",
-    avatarUrl: "", // Simulating a blank image to trigger the fallback gradient
-    description: "Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam"
-  };
+function Account() {
+  const user = useMemo(() => {
+    try {
+      const data = localStorage.getItem("popxUser");
+      if (!data) {
+        return {
+          name: "PopX User",
+          email: "user@popx.com",
+        };
+      }
+
+      const parsed = JSON.parse(data);
+      return {
+        name: parsed.name || "PopX User",
+        email: parsed.email || "user@popx.com",
+        company: parsed.company || "PopX",
+        isAgency: parsed.isAgency || "no",
+      };
+    } catch (error) {
+      console.warn("Failed to parse user data from localStorage:", error);
+      return {
+        name: "PopX User",
+        email: "user@popx.com",
+        company: "PopX",
+        isAgency: "no",
+      };
+    }
+  }, []);
 
   return (
-    <div className="page-animate account-container">
-      
-      {/* 1. Clean Top Header */}
-      <div className="account-header">
-        <h1 className="account-title">Account Settings</h1>
+    <section className="account">
+      <div className="account__header">
+        <h1 className="account__title">Account Settings</h1>
       </div>
 
-      {/* 2. Premium Shadow Card wrapper for Profile */}
-      <div className="account-card">
-        
-        <div className="account-avatar">
-          {/* Graceful fallback if user has no image uploaded */}
-          {user.avatarUrl ? (
-            <img src={user.avatarUrl} alt="Cover" style={{ width: '100%', height: '100%', borderRadius: '50%' }} />
-          ) : (
-            // Generates initials (e.g. "M") inside a purple gradient circle
-            user.name.charAt(0).toUpperCase()
-          )}
+      <div className="account__card">
+        <div className="account__profile">
+          <div className="account__avatar" aria-hidden="true">
+            {user.name.charAt(0).toUpperCase()}
+          </div>
+          <div>
+            <h2 className="account__name">{user.name}</h2>
+            <p className="account__email">{user.email}</p>
+            <p className="account__company">{user.company}</p>
+            <p className="account__agency">
+              {user.isAgency === "yes" ? "Agency Account" : "Individual Account"}
+            </p>
+          </div>
         </div>
-        
-        <h2 className="account-name">{user.name}</h2>
-        <p className="account-email">{user.email}</p>
-        
-      </div>
-
-      {/* 3. Faded Description Text */}
-      <div className="account-description-section">
-        <p className="account-description">
-          {user.description}
+        <p className="account__description">
+          Manage your profile information and preferences in one place.
         </p>
       </div>
-      
-    </div>
+    </section>
   );
 }
+
+export default Account;

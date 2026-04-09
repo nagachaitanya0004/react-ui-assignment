@@ -1,75 +1,79 @@
-/* src/pages/Account.css */
-.account-container {
+.account {
   display: flex;
   flex-direction: column;
-  padding: 30px;
-  height: 100%;
+  min-height: 100%;
+  gap: 16px;
 }
 
-.account-header {
-  margin-bottom: 30px;
+.account__header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.account-title {
-  font-size: 2rem;
+.account__title {
+  font-size: 1.35rem;
   font-weight: 700;
-  color: #111827;
+  color: #1a1a1a;
   margin: 0;
-  line-height: 1.2;
 }
 
-/* Subtle card container for premium profile look */
-.account-card {
-  background-color: #ffffff;
-  border-radius: 20px;
-  padding: 32px 20px;
+.account__card {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Premium soft shadow */
-  border: 1px solid #f9fafb;
-  margin-bottom: 30px;
+  gap: 16px;
 }
 
-/* Circular Avatar Styles */
-.account-avatar {
-  width: 86px;
-  height: 86px;
+.account__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.account__avatar {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  margin-bottom: 20px;
-  object-fit: cover;
-  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
-  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
-  font-weight: bold;
-  box-shadow: 0 6px 15px rgba(126, 34, 206, 0.25);
-}
-
-.account-name {
-  font-size: 1.4rem;
   font-weight: 700;
-  color: #111827;
-  margin: 0 0 6px 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6c25ff, #9333ea);
 }
 
-.account-email {
-  font-size: 0.95rem;
-  color: #6b7280; /* Neutral gray */
-  margin: 0;
-  font-weight: 500;
+.account__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
 }
 
-/* Description Section Wrapper */
-.account-description-section {
-  flex-grow: 1;
+.account__email {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 4px;
 }
 
-.account-description {
-  font-size: 1.05rem;
-  color: #6b7280; /* Faded styling per requirement */
+.account__company {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.account__agency {
+  font-size: 0.875rem;
+  color: #6c25ff;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.account__description {
+  font-size: 0.92rem;
+  color: #6b7280;
   line-height: 1.6;
-  margin: 0;
 }

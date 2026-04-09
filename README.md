@@ -1,16 +1,96 @@
-# React + Vite
+# PopX Authentication UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-quality, mobile-first authentication interface built with React and Vite.  
+This project includes four polished screens (Welcome, Login, Register, Account Settings), reusable UI components, and a clean CSS-based design system.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Mobile-first app shell with centered `375px` layout
+- Reusable `Layout`, `Button`, `Input`, and custom `Radio` components
+- Client-side routing with `react-router-dom`
+- Login and Register form validation
+- Disabled submit states until forms are valid
+- LocalStorage mock persistence for user/session data
+- Account screen that renders stored user data
+- Consistent spacing, typography, transitions, and visual hierarchy
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React (Vite)
+- Functional components
+- `react-router-dom`
+- Plain CSS (no Tailwind, no inline styles)
+- LocalStorage (mock persistence)
 
-## Expanding the ESLint configuration
+## Folder Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```txt
+src/
+├── components/
+│   ├── Layout.jsx
+│   ├── Layout.css
+│   ├── Button.jsx
+│   ├── Button.css
+│   ├── Input.jsx
+│   ├── Input.css
+│   ├── Radio.jsx
+│   └── Radio.css
+├── pages/
+│   ├── Home.jsx
+│   ├── Home.css
+│   ├── Login.jsx
+│   ├── Login.css
+│   ├── Register.jsx
+│   ├── Register.css
+│   ├── Account.jsx
+│   └── Account.css
+├── assets/
+├── styles/
+│   └── global.css
+├── App.jsx
+└── main.jsx
+```
+
+## Routes
+
+- `/` -> Welcome (Home)
+- `/login` -> Login
+- `/register` -> Register
+- `/account` -> Account Settings
+
+## Setup
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Start development server
+
+```bash
+npm run dev
+```
+
+3. Build production bundle
+
+```bash
+npm run build
+```
+
+4. Preview production build
+
+```bash
+npm run preview
+```
+
+## Live Demo
+
+[Add deployment URL here](https://example.com)
+
+## Notes
+
+- This is a frontend-only implementation (no backend auth API).
+- LocalStorage keys used:
+  - `popxUser`
+  - `popxSession`

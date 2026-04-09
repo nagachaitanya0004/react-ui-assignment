@@ -1,41 +1,39 @@
-import React from 'react';
-import './Input.css';
+import { memo } from "react";
+import "./Input.css";
 
-export default function Input({ label, type = 'text', value, onChange, placeholder, name, options, className = '' }) {
-  if (type === 'radio' && options) {
-    return (
-      <div className={`ui-input-wrapper ${className}`}>
-        {label && <label className="ui-input-label">{label}</label>}
-        <div className="ui-radio-group">
-          {options.map((option) => (
-            <label key={option.value} className="ui-radio-wrapper">
-              <input
-                type="radio"
-                name={name}
-                value={option.value}
-                checked={value === option.value}
-                onChange={onChange}
-                className="ui-radio-input"
-              />
-              {option.label}
-            </label>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
+const Input = memo(function Input({
+  label,
+  type = "text",
+  placeholder,
+  value,
+  onChange,
+  name,
+  error = "",
+  required = false,
+}) {
   return (
-    <div className={`ui-input-wrapper ${className}`}>
-      {label && <label className="ui-input-label">{label}</label>}
+    <div className="input">
+      {label ? (
+        <label className="input__label" htmlFor={name}>
+          {label}
+          {required && <span className="input__required">*</span>}
+        </label>
+      ) : null}
       <input
+        id={name}
+        className={`input__field ${error ? "input__field--error" : ""}`}
         type={type}
-        name={name}
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
-        placeholder={placeholder}
-        className="ui-input-field"
+        name={name}
+        required={required}
       />
+      {error ? <p className="input__error">{error}</p> : null}
     </div>
   );
-}
+});
+
+Input.displayName = "Input";
+
+export default Input;

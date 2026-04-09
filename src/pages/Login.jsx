@@ -1,53 +1,81 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import './Login.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import Input from "../components/Input";
+import "./Login.css";
 
-export default function Login() {
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // UX Optimization: Derived state to cleanly check validation
-  const isFormValid = email.trim() !== '' && password.trim() !== '';
+  const isEmailValid = emailRegex.test(email.trim());
+  const isPasswordValid = password.trim().length > 0;
+  const isFormValid = isEmailValid && isPasswordValid;
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (isFormValid) {
-      navigate('/account');
+    setIsSubmitted(true);
+    if (!isFormValid) {
+      return;
     }
+
+    localStorage.setItem(
+      "popxUser",
+      JSON.stringify({
+        name: "PopX User",
+        email: email.trim(),
+        company: "PopX",
+        isAgency: "no",
+      })
+    );
+    localStorage.setItem(
+      "popxSession",
+      JSON.stringify({
+        email: email.trim(),
+        isLoggedIn: true,
+      })
+    );
+    navigate("/account");
   };
 
   return (
-    <div className="page-animate login-container">
-      <h1 className="login-title">Signin to your PopX account</h1>
-      <p className="login-subtitle">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-      </p>
+    <section className="auth-page">
+      <div className="auth-page__header">
+        <h1 className="auth-page__title">Sign in to your PopX account</h1>
+        <p className="auth-page__subtitle">
+          Access your account securely and continue your journey.
+        </p>
+      </div>
 
-      <form onSubmit={handleLogin} className="login-form">
-        <Input 
-          label="Email Address" 
-          type="email" 
-          placeholder="Enter email address" 
+      <form className="auth-page__form" onSubmit={handleLogin} noValidate>
+        <Input
+          label="Email"
+          type="email"
+          name="email"
+          placeholder="Enter your email address"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
+          error={isSubmitted && !isEmailValid ? "Enter a valid email address." : ""}
+          required
         />
-        <Input 
-          label="Password" 
-          type="password" 
-          placeholder="Enter password" 
+        <Input
+          label="Password"
+          type="password"
+          name="password"
+          placeholder="Enter your password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
+          error={isSubmitted && !isPasswordValid ? "Password is required." : ""}
+          required
         />
-        
-        <div className="login-submit-wrapper">
-          <Button type="submit" variant="primary" disabled={!isFormValid}>
-            Login
-          </Button>
-        </div>
+        <Button text="Login" type="submit" disabled={!isFormValid} />
       </form>
-    </div>
+    </section>
   );
 }
+
+export default Login;

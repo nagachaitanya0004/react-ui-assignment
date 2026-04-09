@@ -1,26 +1,77 @@
-/* src/components/Layout.css */
-.layout-wrapper {
+.layout {
+  min-height: 100vh;
+  background: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  width: 100%;
-  background-color: #f3f4f6; 
+  padding: 16px;
 }
-.mobile-container {
+
+.layout__container {
   width: 100%;
-  max-width: 375px; 
-  height: 100vh;
-  background-color: #ffffff;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08); 
-  border: 1px solid #e5e7eb;
+  max-width: 375px;
+  min-height: calc(100vh - 32px);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  overflow: hidden;
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
-@media (min-width: 600px) and (min-height: 850px) {
-  .mobile-container {
-    height: 812px; 
-    border-radius: 40px; 
+
+.layout__nav {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.layout__nav-button {
+  pointer-events: auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.96);
+  color: #1a1a1a;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.layout__nav-button:hover {
+  transform: translateY(-1px);
+  background: #ffffff;
+}
+
+.layout__nav-button:active {
+  transform: translateY(0);
+}
+
+.layout__content {
+  height: 100%;
+  min-height: calc(100vh - 32px);
+  padding: 64px 20px 24px;
+}
+
+@media (max-width: 430px) {
+  .layout {
+    padding: 0;
+  }
+
+  .layout__container {
+    min-height: 100vh;
+    border-radius: 0;
+  }
+
+  .layout__content {
+    min-height: 100vh;
   }
 }

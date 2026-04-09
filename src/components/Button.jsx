@@ -1,15 +1,26 @@
-import React from 'react';
-import './Button.css';
+import { memo } from "react";
+import "./Button.css";
 
-export default function Button({ children, onClick, type = 'button', variant = 'primary', className = '', disabled = false }) {
+const Button = memo(function Button({
+  text,
+  variant = "primary",
+  onClick,
+  disabled = false,
+  fullWidth = true,
+  type = "button",
+}) {
   return (
-    <button 
-      className={`ui-button ${variant} ${className}`} 
-      onClick={disabled ? undefined : onClick} 
-      type={type} 
+    <button
+      type={type}
+      className={`button button--${variant} ${fullWidth ? "button--full" : ""}`}
+      onClick={onClick}
       disabled={disabled}
     >
-      {children}
+      {text}
     </button>
   );
-}
+});
+
+Button.displayName = "Button";
+
+export default Button;

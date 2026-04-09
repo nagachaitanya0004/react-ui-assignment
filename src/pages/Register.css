@@ -1,33 +1,35 @@
-/* src/pages/Register.css */
-.register-container {
+.register-page {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Anchors content to top */
-  padding: 30px;
-  height: 100%;
+  min-height: 100%;
+  gap: 24px;
 }
 
-.register-title {
-  font-size: 2.2rem;
+.register-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.register-page__title {
+  font-size: 1.7rem;
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 30px; /* More spacing since there's no subtitle */
-  line-height: 1.2;
+  color: #1a1a1a;
+  line-height: 1.3;
 }
 
-.register-form {
+.register-page__subtitle {
+  font-size: 0.92rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.register-page__form {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Pushes bottom elements appropriately */
+  gap: 16px;
 }
 
-/* Adds heavy breathing room specifically above the radio group section */
-.register-radio-section {
-  margin-top: 12px;
-}
-
-/* Ensure the submit button has spacing to breathe */
-.register-submit-wrapper {
-  margin-top: 24px;
-  margin-bottom: 20px;
+.register-page__radio {
+  margin-top: 4px;
 }

@@ -1,44 +1,53 @@
-/* src/components/Button.css */
-.ui-button {
-  width: 100%;
-  padding: 14px 20px;
-  border-radius: 30px; 
-  font-size: 1rem;
+.button {
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  font-size: 0.95rem;
   font-weight: 600;
+  line-height: 1.2;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
-  margin-bottom: 12px;
-  letter-spacing: 0.3px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease,
+    background-color 0.2s ease;
 }
-.ui-button.primary {
-  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
-  color: white;
-  box-shadow: 0 4px 14px rgba(126, 34, 206, 0.3);
+
+.button--full {
+  width: 100%;
 }
-.ui-button.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(126, 34, 206, 0.4);
-  background: linear-gradient(135deg, #b065f8 0%, #8b32d8 100%);
+
+.button--primary {
+  background: linear-gradient(135deg, #6c25ff, #9333ea);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(108, 37, 255, 0.26);
 }
-.ui-button.primary:active {
-  transform: scale(0.98);
-  box-shadow: 0 2px 10px rgba(126, 34, 206, 0.3);
+
+.button--secondary {
+  background-color: #f3ecff;
+  border-color: #e5e7eb;
+  color: #6c25ff;
 }
-.ui-button.secondary {
-  background-color: #e9d5ff; 
-  color: #1f2937; 
-  border: none; 
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.01);
 }
-.ui-button.secondary:hover {
-  background-color: #d8b4fe;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(216, 180, 254, 0.4);
+
+.button--primary:hover:not(:disabled) {
+  box-shadow: 0 10px 24px rgba(108, 37, 255, 0.3);
+  filter: brightness(1.02);
 }
-.ui-button:disabled {
-  opacity: 0.5;
+
+.button--secondary:hover:not(:disabled) {
+  background-color: #efe6ff;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.button:disabled {
   cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
-  background: #cbd5e1 !important; 
+  background: #e5e7eb;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+  box-shadow: none;
 }

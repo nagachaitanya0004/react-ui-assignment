@@ -1,27 +1,29 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import './Home.css';
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import "./Home.css";
 
-export default function Home() {
+function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="page-animate home-container">
-      <h1 className="home-title">Welcome to PopX</h1>
-      
-      <p className="home-subtitle">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit
-      </p>
-
-      <div className="home-buttons-wrapper">
-        <Button variant="primary" onClick={() => navigate('/register')}>
-          Create Account
-        </Button>
-        <Button variant="secondary" onClick={() => navigate('/login')}>
-          Already Registered? Login
-        </Button>
+    <section className="home">
+      <div className="home__content">
+        <h1 className="home__title">Welcome to PopX</h1>
+        <p className="home__subtitle">
+        Create your account and manage your profile seamlessly with a modern and secure experience.
+        </p>
       </div>
-    </div>
+
+      <div className="home__actions">
+        <Button text="Create Account" variant="primary" onClick={() => navigate("/register")} />
+        <Button
+          text="Already Registered? Login"
+          variant="secondary"
+          onClick={() => navigate("/login")}
+        />
+      </div>
+    </section>
   );
 }
+
+export default Home;

@@ -1,5 +1,4 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Layout from "./components/Layout";
@@ -9,17 +8,24 @@ import Register from "./pages/Register";
 import Account from "./pages/Account";
 
 function App() {
+  const RouterComponent =
+    typeof window !== "undefined" && window.location.protocol === "file:"
+      ? HashRouter
+      : BrowserRouter;
+
   return (
-    <Layout>
-      <BrowserRouter>
+    <RouterComponent>
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
-    </Layout>
+      </Layout>
+    </RouterComponent>
   );
 }
 

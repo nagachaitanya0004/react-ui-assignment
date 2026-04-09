@@ -1,33 +1,32 @@
-/* src/pages/Home.css */
-.home-container {
+.home {
   display: flex;
   flex-direction: column;
-  /* Push everything natively to the bottom */
-  justify-content: flex-end; 
-  height: 100%;
-  padding: 30px;
-  padding-bottom: 50px; /* Extra breathing room at the base */
+  min-height: 100%;
+  justify-content: flex-end;
+  gap: 24px;
 }
 
-.home-title {
-  font-size: 2.2rem;
+.home__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home__title {
+  font-size: 1.9rem;
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 16px;
-  line-height: 1.2;
+  color: #1a1a1a;
+  line-height: 1.25;
 }
 
-.home-subtitle {
-  font-size: 1.05rem;
-  color: #6b7280; /* Soft gray */
+.home__subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
   line-height: 1.6;
-  margin-bottom: 36px;
-  max-width: 90%; /* Keeps text wrapped beautifully */
 }
 
-.home-buttons-wrapper {
+.home__actions {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Clean spacing between buttons */
-  width: 100%;
+  gap: 12px;
 }

@@ -1,35 +1,31 @@
-/* src/pages/Login.css */
-.login-container {
+.auth-page {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Ensure content anchors to top */
-  padding: 30px;
-  height: 100%;
+  min-height: 100%;
+  gap: 24px;
 }
 
-.login-title {
-  font-size: 2.2rem;
+.auth-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-page__title {
+  font-size: 1.7rem;
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 16px;
-  line-height: 1.2;
+  line-height: 1.3;
+  color: #1a1a1a;
 }
 
-.login-subtitle {
-  font-size: 1.05rem;
-  color: #6b7280; /* Soft dark gray */
-  line-height: 1.5;
-  margin-bottom: 30px;
-  max-width: 90%;
+.auth-page__subtitle {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #6b7280;
 }
 
-.login-form {
+.auth-page__form {
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Pushes bottom elements down if any existed */
-}
-
-/* Adds some space before the submit button starts */
-.login-submit-wrapper {
-  margin-top: 10px;
+  gap: 16px;
 }

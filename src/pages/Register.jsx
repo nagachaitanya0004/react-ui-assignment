@@ -1,108 +1,134 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/ui/Button';
-import Input from '../components/ui/Input';
-import './Register.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
+import Input from "../components/Input";
+import Radio from "../components/Radio";
+import "./Register.css";
 
-export default function Register() {
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function Register() {
   const navigate = useNavigate();
-  // Grouping state objects cleanly
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    password: '',
-    company: '',
-    isAgency: 'yes'
+    name: "",
+    phone: "",
+    email: "",
+    password: "",
+    company: "",
+    isAgency: "yes",
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Universal handler mapped to Input names
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const isNameValid = formData.name.trim().length > 0;
+  const isPhoneValid = formData.phone.trim().length > 0;
+  const isEmailValid = emailRegex.test(formData.email.trim());
+  const isPasswordValid = formData.password.trim().length > 0;
+  const isCompanyValid = formData.company.trim().length > 0;
+
+  const isFormValid =
+    isNameValid &&
+    isPhoneValid &&
+    isEmailValid &&
+    isPasswordValid &&
+    isCompanyValid;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
-  // Validation strictly evaluating all text fields
-  const isFormValid = 
-    formData.name.trim() !== '' &&
-    formData.phone.trim() !== '' &&
-    formData.email.trim() !== '' &&
-    formData.password.trim() !== '' &&
-    formData.company.trim() !== '';
 
   const handleRegister = (e) => {
     e.preventDefault();
-    if (isFormValid) {
-      // Moves user flawlessly down the funnel
-      navigate('/account');
+    setIsSubmitted(true);
+    if (!isFormValid) {
+      return;
     }
+    localStorage.setItem("popxUser", JSON.stringify(formData));
+    localStorage.setItem(
+      "popxSession",
+      JSON.stringify({ email: formData.email.trim(), isLoggedIn: true })
+    );
+    navigate("/account");
   };
 
   const agencyOptions = [
-    { label: 'Yes', value: 'yes' },
-    { label: 'No', value: 'no' },
+    { label: "Yes", value: "yes" },
+    { label: "No", value: "no" },
   ];
 
   return (
-    <div className="page-animate register-container">
-      <h1 className="register-title">Create your PopX account</h1>
+    <section className="register-page">
+      <div className="register-page__header">
+        <h1 className="register-page__title">Create your PopX account</h1>
+        <p className="register-page__subtitle">
+          Join PopX and start managing your profile efficiently.
+        </p>
+      </div>
 
-      <form onSubmit={handleRegister} className="register-form">
-        <Input 
-          label="Full Name*" 
+      <form onSubmit={handleRegister} className="register-page__form" noValidate>
+        <Input
+          label="Full Name"
           name="name"
-          placeholder="Enter your full name" 
+          placeholder="Enter your full name"
           value={formData.name}
           onChange={handleChange}
+          error={isSubmitted && !isNameValid ? "Full name is required." : ""}
+          required
         />
-        <Input 
-          label="Phone number*" 
+        <Input
+          label="Phone Number"
           name="phone"
-          placeholder="Enter your phone number" 
+          type="tel"
+          placeholder="Enter your phone number"
           value={formData.phone}
           onChange={handleChange}
+          error={isSubmitted && !isPhoneValid ? "Phone number is required." : ""}
+          required
         />
-        <Input 
-          label="Email address*" 
+        <Input
+          label="Email"
           name="email"
-          type="email" 
-          placeholder="Enter your email address" 
+          type="email"
+          placeholder="Enter your email"
           value={formData.email}
           onChange={handleChange}
+          error={isSubmitted && !isEmailValid ? "Enter a valid email address." : ""}
+          required
         />
-        <Input 
-          label="Password*" 
+        <Input
+          label="Password"
           name="password"
-          type="password" 
-          placeholder="Create a strong password" 
+          type="password"
+          placeholder="Create a password"
           value={formData.password}
           onChange={handleChange}
+          error={isSubmitted && !isPasswordValid ? "Password is required." : ""}
+          required
         />
-        <Input 
-          label="Company name*" 
+        <Input
+          label="Company Name"
           name="company"
-          placeholder="Enter your company name" 
+          placeholder="Enter your company name"
           value={formData.company}
           onChange={handleChange}
+          error={isSubmitted && !isCompanyValid ? "Company name is required." : ""}
+          required
         />
-        
-        {/* Isolated section for the horizontal radio layout */}
-        <div className="register-radio-section">
-          <Input 
-            label="Are you an Agency?*"
-            type="radio"
+
+        <div className="register-page__radio">
+          <Radio
+            label="Are you an Agency?"
             name="isAgency"
             value={formData.isAgency}
             onChange={handleChange}
             options={agencyOptions}
           />
         </div>
-        
-        <div className="register-submit-wrapper">
-          <Button type="submit" variant="primary" disabled={!isFormValid}>
-            Create Account
-          </Button>
-        </div>
+
+        <Button text="Create Account" type="submit" disabled={!isFormValid} />
       </form>
-    </div>
+    </section>
   );
 }
+
+export default Register;
