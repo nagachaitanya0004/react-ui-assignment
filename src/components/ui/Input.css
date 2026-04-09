@@ -1,0 +1,73 @@
+/* src/components/ui/Input.css */
+.ui-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Increased for breathing room */
+  width: 100%;
+}
+
+.ui-input-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b5563; /* Softer dark gray */
+  margin-bottom: 8px;
+  margin-left: 4px;
+}
+
+.ui-input-field {
+  padding: 14px 18px;
+  border: 1.5px solid #e5e7eb;
+  background-color: #f9fafb;
+  border-radius: 16px; /* Softly rounded corners */
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+  color: #1f2937;
+}
+
+.ui-input-field::placeholder {
+  color: #9ca3af;
+}
+
+.ui-input-field:focus {
+  border-color: #a855f7; /* Purple ring */
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1); /* Soft purple glow */
+}
+
+/* Radio Specific Styles */
+.ui-radio-group {
+  display: flex;
+  flex-direction: row; /* Horizontal side-by-side layout for mobile styling */
+  gap: 12px;
+  margin-bottom: 12px;
+  margin-top: 6px;
+}
+
+.ui-radio-wrapper {
+  display: flex;
+  flex: 1; /* Stretch buttons perfectly to split the screen */
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: #f9fafb;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.ui-radio-wrapper:hover {
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+/* We could target checked state via input:checked + label but since the label wraps, we handle focus via accent color */
+.ui-radio-input {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #a855f7; /* Purple selection */
+}

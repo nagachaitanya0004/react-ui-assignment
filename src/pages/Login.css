@@ -1,0 +1,35 @@
+/* src/pages/Login.css */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ensure content anchors to top */
+  padding: 30px;
+  height: 100%;
+}
+
+.login-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.login-subtitle {
+  font-size: 1.05rem;
+  color: #6b7280; /* Soft dark gray */
+  line-height: 1.5;
+  margin-bottom: 30px;
+  max-width: 90%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes bottom elements down if any existed */
+}
+
+/* Adds some space before the submit button starts */
+.login-submit-wrapper {
+  margin-top: 10px;
+}

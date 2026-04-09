@@ -1,0 +1,75 @@
+/* src/pages/Account.css */
+.account-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  height: 100%;
+}
+
+.account-header {
+  margin-bottom: 30px;
+}
+
+.account-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Subtle card container for premium profile look */
+.account-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Premium soft shadow */
+  border: 1px solid #f9fafb;
+  margin-bottom: 30px;
+}
+
+/* Circular Avatar Styles */
+.account-avatar {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  box-shadow: 0 6px 15px rgba(126, 34, 206, 0.25);
+}
+
+.account-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px 0;
+}
+
+.account-email {
+  font-size: 0.95rem;
+  color: #6b7280; /* Neutral gray */
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Description Section Wrapper */
+.account-description-section {
+  flex-grow: 1;
+}
+
+.account-description {
+  font-size: 1.05rem;
+  color: #6b7280; /* Faded styling per requirement */
+  line-height: 1.6;
+  margin: 0;
+}

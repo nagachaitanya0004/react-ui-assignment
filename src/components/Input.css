@@ -1,0 +1,63 @@
+/* src/components/Input.css */
+.ui-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
+}
+.ui-input-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #a855f7;
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  background-color: white;
+  padding: 0 4px;
+  z-index: 1;
+}
+.ui-input-field {
+  padding: 16px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #d1d5db;
+  font-size: 1rem;
+  color: #1f2937;
+  background-color: transparent;
+  transition: all 0.2s;
+}
+.ui-input-field:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
+}
+.ui-radio-group {
+  display: flex;
+  flex-direction: row; 
+  gap: 12px;
+  margin-bottom: 12px;
+  margin-top: 6px;
+}
+.ui-radio-wrapper {
+  display: flex;
+  flex: 1; 
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: #f9fafb;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  color: #4b5563;
+}
+.ui-radio-wrapper:hover {
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+.ui-radio-input {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #a855f7; 
+}

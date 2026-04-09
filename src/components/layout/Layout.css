@@ -1,0 +1,38 @@
+/* src/components/layout/Layout.css */
+
+/* The outer boundary stretching across the whole screen */
+.layout-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  
+  /* Modern light gray background for high contrast */
+  background-color: #f3f4f6; 
+}
+
+/* The actual phone-sized application boundary */
+.mobile-container {
+  width: 100%;
+  max-width: 375px; /* Standard mobile width */
+  height: 100vh;
+  
+  /* Clean modern styling */
+  background-color: #ffffff;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08); /* Subtle realistic shadow */
+  border: 1px solid #e5e7eb;
+  
+  /* Scroll management */
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Media Query: When viewed on a large desktop monitor instead of a phone */
+@media (min-width: 600px) and (min-height: 850px) {
+  .mobile-container {
+    height: 812px; /* Fixed height simulating a phone screen */
+    border-radius: 40px; /* Rounded corners like a physical device */
+  }
+}

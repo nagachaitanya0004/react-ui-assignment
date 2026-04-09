@@ -1,0 +1,33 @@
+/* src/pages/Register.css */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Anchors content to top */
+  padding: 30px;
+  height: 100%;
+}
+
+.register-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 30px; /* More spacing since there's no subtitle */
+  line-height: 1.2;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes bottom elements appropriately */
+}
+
+/* Adds heavy breathing room specifically above the radio group section */
+.register-radio-section {
+  margin-top: 12px;
+}
+
+/* Ensure the submit button has spacing to breathe */
+.register-submit-wrapper {
+  margin-top: 24px;
+  margin-bottom: 20px;
+}

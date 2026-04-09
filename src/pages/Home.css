@@ -1,0 +1,33 @@
+/* src/pages/Home.css */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  /* Push everything natively to the bottom */
+  justify-content: flex-end; 
+  height: 100%;
+  padding: 30px;
+  padding-bottom: 50px; /* Extra breathing room at the base */
+}
+
+.home-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.home-subtitle {
+  font-size: 1.05rem;
+  color: #6b7280; /* Soft gray */
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 90%; /* Keeps text wrapped beautifully */
+}
+
+.home-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Clean spacing between buttons */
+  width: 100%;
+}
